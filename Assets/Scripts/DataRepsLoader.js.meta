@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/59bc7189-7fb0-4875-be5c-11fd20a8e62f>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> f6e25125-4366-4bd3-9008-70355e1b819b
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> f6e25125-4366-4bd3-9008-70355e1b819b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 7a7f1cfb-4b8b-4be3-998b-9bfc8a42c5eb
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/7a7f1cfb-4b8b-4be3-998b-9bfc8a42c5eb>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: f746cceb-c380-47e5-bd0a-15d6c895e524
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    boxSpawner: false
+    cylinderSpawner: false
+    jsonFile: false
+    octahedronSpawner: false
+    planeSpawner: false
+    plusSpawner: false
+    pyramidSpawner: false
+    sphereSpawner: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - jsonFile: !<reference.JsonAsset> 00000000-0000-0000-0000-000000000000
+      sphereSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      boxSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      cylinderSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      planeSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      pyramidSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      octahedronSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      plusSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}

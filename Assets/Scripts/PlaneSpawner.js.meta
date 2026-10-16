@@ -1,0 +1,44 @@
+- !<AssetImportMetadata/165fc577-1ca2-400a-8a83-e7b5bda900f0>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> 2de4cd77-2eac-40a9-8986-7e38c6e0cd43
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> 2de4cd77-2eac-40a9-8986-7e38c6e0cd43
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> c47b2398-4a5e-45e1-963f-80040faf64f8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/c47b2398-4a5e-45e1-963f-80040faf64f8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: c8daf143-eb12-4454-9bd5-87f4efd1e95b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    planePrefab: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - planePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}

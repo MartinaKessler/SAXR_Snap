@@ -1,0 +1,107 @@
+- !<AssetImportMetadata/efe53623-a957-4326-b703-6b9de60e07fe>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 3a2346bb-75a7-440f-9e34-ff43d5af7a3a
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 3a2346bb-75a7-440f-9e34-ff43d5af7a3a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> c0014251-3cce-4a37-b8d9-eb977f91d4dc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/1c298ca2-32b7-4572-5306-d20ebda97532>
+  PrefabRemaps:
+    []
+  Name: Lover Half
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -0.250000, z: 0.000000}
+    Rotation: {x: 180.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 0.500000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 771e0d7a-e907-4621-5b43-9c7ea8de4aeb
+- !<SceneObject/2435c082-05c9-48f9-5b42-469598b8e987>
+  PrefabRemaps:
+    []
+  Name: Upper Half
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.250000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 0.500000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> de32b8ae-6b01-4ffb-7c97-3589ea72696c
+- !<SceneObject/2e79357c-9b49-4778-6635-a8436de26493>
+  PrefabRemaps:
+    []
+  Name: Octahedron
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 2435c082-05c9-48f9-5b42-469598b8e987
+    - !<own> 1c298ca2-32b7-4572-5306-d20ebda97532
+  Components:
+    []
+- !<RenderMeshVisual/771e0d7a-e907-4621-5b43-9c7ea8de4aeb>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bb5cf0f5-71d6-4550-bfe6-8c60844bc1be
+  Mesh: !<reference> 55adbeda-fefc-49ce-ae78-a875913628ea
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ObjectPrefabAssetData/c0014251-3cce-4a37-b8d9-eb977f91d4dc>
+  Prototype: !<ObjectOwner/75d34d78-e4f5-4def-a092-04025ab7e90b>
+    PackagePath: ""
+    objects:
+      - !<own> 2e79357c-9b49-4778-6635-a8436de26493
+- !<RenderMeshVisual/de32b8ae-6b01-4ffb-7c97-3589ea72696c>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bb5cf0f5-71d6-4550-bfe6-8c60844bc1be
+  Mesh: !<reference> 55adbeda-fefc-49ce-ae78-a875913628ea
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

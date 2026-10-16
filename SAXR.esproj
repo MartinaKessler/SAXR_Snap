@@ -1,0 +1,55 @@
+studioVersion:
+  major: 5
+  minor: 24
+  patch: 1
+  build: 26100516
+  type: Public
+coreVersion: 377
+clientVersion: 14.21
+updateCheckpoint: 107
+sceneId: 0a1ccb1a-fe88-4fbb-9883-e3af3c75fd99
+metaInfo:
+  hints:
+    []
+  tags:
+    []
+  lensName: World Lens
+  lensDescriptors:
+    - AI_MUTATED
+  lensApplicableContext:
+    - live_camera
+    - reply_camera
+    - video_chat
+  lensApplicability:
+    - Front
+    - Back
+  lensClientCompatibilities:
+    - Mobile
+    - CameraKit
+  platformBundlesEnabled: false
+  iconHash: ""
+  videoPreviewHash: ""
+  localizationsHash: ""
+  fromTemplateName: World Lens
+  fromTemplateUrl: Lens Studio 5.23.2.26081320
+  activationCamera: Rear
+  sourceMapEnabled: false
+  shaderCacheInvalidationEnabled: false
+  usingMinClientVersions: false
+  androidMinClientVersion:
+    major: 0
+    minor: 0
+    patch: 0
+    build: 0
+  iOSMinClientVersion:
+    major: 0
+    minor: 0
+    patch: 0
+    build: 0
+  documentId: 81e818c5-8df4-4335-aae7-06103469f04b
+  originalDocumentId: 4457688c-bbc9-4bd3-8fab-02820c58d58c
+  packageId: ""
+  packageVersion: ""
+  spkPrivilegeLevel: Generic
+  gluboEnabled: false
+targetPlatform: Snapchat
