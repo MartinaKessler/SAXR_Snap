@@ -1,14 +1,13 @@
-//@component
 // @input Asset.ObjectPrefab planePrefab
 
 var planeTextures = {
-    // // iris
-    // "xy.png": requireAsset("../Datasets/iris/xy.png"),
-    // "-xy.png": requireAsset("../Datasets/iris/-xy.png"),
-    // "xz.png": requireAsset("../Datasets/iris/xz.png"),
-    // "zy.png": requireAsset("../Datasets/iris/zy.png"),
-    // "-zy.png": requireAsset("../Datasets/iris/-zy.png"),
-    // "lc.png": requireAsset("../Datasets/iris/lc.png"),
+    // iris
+    "xy.png": requireAsset("../Datasets/iris/xy.png"),
+    "-xy.png": requireAsset("../Datasets/iris/-xy.png"),
+    "xz.png": requireAsset("../Datasets/iris/xz.png"),
+    "zy.png": requireAsset("../Datasets/iris/zy.png"),
+    "-zy.png": requireAsset("../Datasets/iris/-zy.png"),
+    "lc.png": requireAsset("../Datasets/iris/lc.png"),
 
     // // burnout
     // "xy.png": requireAsset("../Datasets/burnout/xy.png"),
@@ -41,12 +40,12 @@ var planeTextures = {
     // ingredients_cylinder
     // "lc.png": requireAsset("../Datasets/ingredients_cylinder/lc.png"),
 
-    // line
-    "xy.png": requireAsset("../Datasets/line/xy.png"),
-    "-xy.png": requireAsset("../Datasets/line/-xy.png"),
-    "xz.png": requireAsset("../Datasets/line/xz.png"),
-    "zy.png": requireAsset("../Datasets/line/zy.png"),
-    "-zy.png": requireAsset("../Datasets/line/-zy.png"),
+    // // line
+    // "xy.png": requireAsset("../Datasets/line/xy.png"),
+    // "-xy.png": requireAsset("../Datasets/line/-xy.png"),
+    // "xz.png": requireAsset("../Datasets/line/xz.png"),
+    // "zy.png": requireAsset("../Datasets/line/zy.png"),
+    // "-zy.png": requireAsset("../Datasets/line/-zy.png"),
 };
 
 // Rotation that maps the plane prefab (lying in XZ) onto each data plane type.
@@ -82,28 +81,50 @@ function findPlaneRotation(type) {
     return null;
 }
 
-function spawnPlaneOfType(type, position, scale, color, textureName) {
+/**
+ * Spawn a plane whose rotation is derived from its data type.
+ * @param {string}      type                   plane type, e.g. "xy", "-zy", "lc="
+ * @param {Object}      options
+ * @param {vec3}        [options.position]     world position
+ * @param {number|vec3} [options.scale]        uniform scale (number) or per-axis scale (vec3)
+ * @param {vec4}        [options.color]        color (r,g,b,a); the instance gets its own cloned material
+ * @param {string}      [options.textureName]  key into planeTextures, e.g. "xy.png"
+ * @returns {SceneObject|null}
+ */
+function spawnPlaneOfType(type, options) {
     var rotation = findPlaneRotation(type);
     if (!rotation) {
         print("Warning: unknown plane type: " + type);
         return null;
     }
-    return spawnPlane(position, rotation, scale, color, textureName);
+    // new object, so the caller's options are not modified
+    return spawnPlane({
+        position: options.position,
+        rotation: rotation,
+        scale: options.scale,
+        color: options.color,
+        textureName: options.textureName,
+    });
 }
 
 /**
  * Spawn a copy of the Plane prefab.
- * @param {vec3}   position  world position
- * @param {quat}   [rotation]  optional world rotation; null keeps the prefab's own orientation (XZ plane)
- * @param {number|vec3} [scale]  optional uniform scale (number) or per-axis scale (vec3)
- * @param {vec4}   [color]  optional color (r,g,b,a); the instance gets its own cloned material
- * @param {string} [textureName]  optional key into planeTextures, e.g. "xy.png"
+ * @param {Object}      options
+ * @param {vec3}        [options.position]     world position
+ * @param {quat}        [options.rotation]     world rotation; missing keeps the prefab's own orientation (XZ plane)
+ * @param {number|vec3} [options.scale]        uniform scale (number) or per-axis scale (vec3)
+ * @param {vec4}        [options.color]        color (r,g,b,a); the instance gets its own cloned material
+ * @param {string}      [options.textureName]  key into planeTextures, e.g. "xy.png"
  * @returns {SceneObject}
  */
-function spawnPlane(position, rotation, scale, color, textureName) {
-    var texture = resolveTexture(textureName);
-    return global.prefabSpawner.spawnPrefab(
-        script.planePrefab, position, rotation, scale, color, texture);
+function spawnPlane(options) {
+    return global.prefabSpawner.spawnPrefab(script.planePrefab, {
+        position: options.position,
+        rotation: options.rotation,
+        scale: options.scale,
+        color: options.color,
+        texture: resolveTexture(options.textureName),
+    });
 }
 
 function resolveTexture(textureName) {

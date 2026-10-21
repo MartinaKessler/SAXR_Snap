@@ -7,6 +7,7 @@
     - !<own> ac61f507-3bc3-4d9b-b4b3-8feeeb339a6c
     - !<own> 017be105-fc12-4217-82ea-a283aac3bf9f
     - !<own> 696f8802-99fd-481d-acf3-2d67cd513332
+    - !<own> 6c52f691-f905-47b7-9926-127435a048f5
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       - id: 1
@@ -293,6 +294,22 @@
     []
   Components:
     - !<own> 6c4ef9bc-7ddd-4b4f-81c0-07e136ec52fc
+- !<ScriptComponent/1279d6c3-61d4-4184-83a3-53712420e2e8>
+  PrefabRemaps:
+    []
+  Name: MaterialUtils
+  Enabled: true
+  ScriptAsset: !<reference> e849f461-dd71-4b7c-8807-8cf2a79dd924
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/1881e90e-a26a-42d2-8bc5-f3e22e0038fa>
   PrefabRemaps:
     - 1881e90e-a26a-42d2-8bc5-f3e22e0038fa: b0e38f34-f932-4c88-4b2b-5995deef2595
@@ -498,13 +515,12 @@
   Enabled: true
   ScriptAsset: !<reference> fea98e60-6413-4044-8a1c-f5dc139a8b7e
   ScriptInputsDefault:
-    cloneMaterial: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       texture: !<reference.Texture> 46c1bbf9-3f73-4845-b552-0c308c4e5381
-      cloneMaterial: true
   ScriptTypes:
     "":
       {}
@@ -558,6 +574,24 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/52cadc4a-0d68-46f3-9b75-793569083811>
+  PrefabRemaps:
+    []
+  Name: RemoteTexture
+  Enabled: true
+  ScriptAsset: !<reference> c3aeeb58-7397-4fdf-bf72-1d08fca7b6f4
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      internetModule: !<reference.InternetModule> a09eb2dd-9781-4e26-a523-2db9e51d2476
+      remoteMediaModule: !<reference.RemoteMediaModule> 0600f675-6b91-4d87-b70b-eef4c54c729e
+      url: "https://service.metason.net/ar/content/viz/irisLOD/lc.png"
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/570283b4-6fec-4755-accb-8bd845993d06>
   PrefabRemaps:
     []
@@ -746,6 +780,22 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/6c52f691-f905-47b7-9926-127435a048f5>
+  PrefabRemaps:
+    []
+  Name: Box
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b8724ef9-11f0-412a-bd0f-664ec37fa9f4
+    - !<own> 52cadc4a-0d68-46f3-9b75-793569083811
 - !<RenderMeshVisual/6f9e5546-d4c5-49e7-8e04-e8a195ad0d33>
   PrefabRemaps:
     []
@@ -923,13 +973,12 @@
   Enabled: true
   ScriptAsset: !<reference> fea98e60-6413-4044-8a1c-f5dc139a8b7e
   ScriptInputsDefault:
-    cloneMaterial: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       texture: !<reference.Texture> 25efd84e-2ecf-4ecd-8cbd-e19398c7776d
-      cloneMaterial: true
   ScriptTypes:
     "":
       {}
@@ -1118,7 +1167,7 @@
   PrefabRemaps:
     []
   Name: Prefabs
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -1206,6 +1255,26 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<RenderMeshVisual/b8724ef9-11f0-412a-bd0f-664ec37fa9f4>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bb5cf0f5-71d6-4550-bfe6-8c60844bc1be
+  Mesh: !<reference> 20919922-8abb-4063-b482-1fc63f615d5f
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
 - !<ScriptComponent/b963682e-1ef3-4994-88cc-e2a43ae2aa89>
   PrefabRemaps:
     []
@@ -1213,13 +1282,12 @@
   Enabled: true
   ScriptAsset: !<reference> fea98e60-6413-4044-8a1c-f5dc139a8b7e
   ScriptInputsDefault:
-    cloneMaterial: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       texture: !<reference.Texture> 25fd020d-10e3-4c88-aef9-6147cff99382
-      cloneMaterial: true
   ScriptTypes:
     "":
       {}
@@ -1307,13 +1375,12 @@
   Enabled: true
   ScriptAsset: !<reference> fea98e60-6413-4044-8a1c-f5dc139a8b7e
   ScriptInputsDefault:
-    cloneMaterial: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       texture: !<reference.Texture> f74cc1c3-5a6a-429e-b772-a66f549fd19b
-      cloneMaterial: true
   ScriptTypes:
     "":
       {}
@@ -1553,6 +1620,7 @@
     - !<own> 68664c0b-4902-4691-ae9d-7843170ff31d
     - !<own> c9fdae88-1bf3-49be-b5b4-248530e2cd3a
     - !<own> 5bbcafed-3231-4c17-8281-851d95e55fe2
+    - !<own> 1279d6c3-61d4-4184-83a3-53712420e2e8
 - !<SceneObject/f9068e87-3f87-49a7-8102-787fac42e074>
   PrefabRemaps:
     []
@@ -1575,13 +1643,12 @@
   Enabled: true
   ScriptAsset: !<reference> fea98e60-6413-4044-8a1c-f5dc139a8b7e
   ScriptInputsDefault:
-    cloneMaterial: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       texture: !<reference.Texture> 64b3b2cc-fda9-4fdf-b652-59b8bea886f4
-      cloneMaterial: true
   ScriptTypes:
     "":
       {}

@@ -28,7 +28,6 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    cloneMaterial: false
     texture: false
   ScriptTypesHidden:
     {}
@@ -40,7 +39,6 @@
     []
   DefaultScriptInputs:
     - texture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
-      cloneMaterial: true
   ScriptTypes:
     -
       {}

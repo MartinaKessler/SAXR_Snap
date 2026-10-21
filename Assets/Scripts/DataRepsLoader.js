@@ -1,4 +1,3 @@
-//@component
 //@input Asset.JsonAsset jsonFile
 //@input Component.ScriptComponent sphereSpawner
 //@input Component.ScriptComponent boxSpawner
@@ -27,21 +26,21 @@ function onStart() {
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
             var scale = global.constants.toWorldScale(obj.w);
             var color = global.colorUtils.toColor(obj.color);
-            script.sphereSpawner.spawnObject(position, null, scale, color);
+            script.sphereSpawner.spawnObject({ position: position, scale: scale, color: color });
         }
 
         if (type === "box"){
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
             var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
             var color = global.colorUtils.toColor(obj.color);
-            script.boxSpawner.spawnObject(position, null, scale, color);
+            script.boxSpawner.spawnObject({ position: position, scale: scale, color: color });
         }
 
         if (type === "cylinder"){
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
             var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
             var color = global.colorUtils.toColor(obj.color);
-            script.cylinderSpawner.spawnObject(position, null, scale, color);
+            script.cylinderSpawner.spawnObject({ position: position, scale: scale, color: color });
         }
 
         if (type === "pyramid" || type === "pyramid_down"){
@@ -52,14 +51,14 @@ function onStart() {
             if (type === "pyramid_down"){
                 rotation = quat.fromEulerAngles(Math.PI, 0, 0);
             }
-            script.pyramidSpawner.spawnObject(position, rotation, scale, color);
+            script.pyramidSpawner.spawnObject({ position: position, rotation: rotation, scale: scale, color: color });
         }
 
         if (type === "octahedron"){
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
             var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
             var color = global.colorUtils.toColor(obj.color);
-            script.octahedronSpawner.spawnObject(position, null, scale, color);
+            script.octahedronSpawner.spawnObject({ position: position, scale: scale, color: color });
         }
 
         if (type === "plus" || type === "cross"){
@@ -70,7 +69,7 @@ function onStart() {
             if (type === "cross"){
                 rotation = quat.fromEulerAngles(0, 0, Math.PI / 4);
             }
-            script.plusSpawner.spawnObject(position, rotation, scale, color);
+            script.plusSpawner.spawnObject({ position: position, rotation: rotation, scale: scale, color: color });
         }
 
         if (type === "line"){
@@ -85,13 +84,13 @@ function onStart() {
             if (length > 1e-6){
                 rotation = quat.rotationFromTo(new vec3(0, 1, 0), direction.normalize());
             }
-            script.boxSpawner.spawnObject(midPoint, rotation, scale, color);
+            script.boxSpawner.spawnObject({ position: midPoint, rotation: rotation, scale: scale, color: color });
         }
 
         if (type === "xz"){
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
             var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
-            script.planeSpawner.spawnPlaneOfType(type, position, scale, null, obj.asset);
+            script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
         }
 
         if (type === "xy" || type == "-xy" || type === "zy"|| type == "-zy"){
@@ -101,13 +100,13 @@ function onStart() {
 
             // swap d and h, because the plane in Lens Studio has extensions in width & height
             var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h)); 
-            script.planeSpawner.spawnPlaneOfType(type, position, scale, null, obj.asset);
+            script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
         }
 
         if (script.planeSpawner.flatLegendPattern.test(type)){
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
             var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
-            script.planeSpawner.spawnPlaneOfType(type, position, scale, null, obj.asset);
+            script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
         }
 
         if (script.planeSpawner.uprightLegendPattern.test(type)){
@@ -116,7 +115,7 @@ function onStart() {
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y + 0.5 * obj.h, obj.z));
             // swap d and h, because the plane in Lens Studio has extensions in width & height
             var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h)); 
-            script.planeSpawner.spawnPlaneOfType(type, position, scale, null, obj.asset);
+            script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
         }
     }
 }

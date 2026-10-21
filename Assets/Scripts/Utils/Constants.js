@@ -1,4 +1,3 @@
-//@component
 // Project-wide constants, exposed as `global.constants`.
 // Place this on a SceneObject near the top of the Scene Hierarchy so it
 // initializes before any script that reads from it.

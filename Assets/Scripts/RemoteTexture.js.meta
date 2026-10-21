@@ -1,20 +1,20 @@
-- !<AssetImportMetadata/273a33dc-db3f-42c3-8a1d-b487133595a6>
+- !<AssetImportMetadata/a70404bc-1374-463d-9046-91bdee663edb>
   ImportedAssetIds:
-    JavaScriptAsset: !<reference> 6e6a4d3d-8ebb-4dc1-b699-dfae279fa059
+    JavaScriptAsset: !<reference> c3aeeb58-7397-4fdf-bf72-1d08fca7b6f4
   ImporterName: JavaScriptAssetImporter
-  PrimaryAsset: !<reference> 6e6a4d3d-8ebb-4dc1-b699-dfae279fa059
+  PrimaryAsset: !<reference> c3aeeb58-7397-4fdf-bf72-1d08fca7b6f4
   PackageType: NotAPackage
   LegacyPackagePolicy: ~
   ExtraData:
     {}
   AssetDataMap:
-    JavaScriptAsset: !<own> 86d3d7c6-6a50-4adb-8a48-3437340f9b86
+    JavaScriptAsset: !<own> 302abeb8-b710-4145-9452-b12b0cf45e7c
   DependentFiles:
     []
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<ScriptAssetData/86d3d7c6-6a50-4adb-8a48-3437340f9b86>
+- !<ScriptAssetData/302abeb8-b710-4145-9452-b12b0cf45e7c>
   SvgIcon: ""
   SetupScript:
     code: ""
@@ -24,11 +24,13 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
-  ComponentUid: 616ec6bc-0169-4378-879b-cbc415e7fd23
+  ComponentUid: 1299b85b-779c-4e35-af0c-85c796d66f0a
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    {}
+    internetModule: false
+    remoteMediaModule: false
+    url: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -38,8 +40,9 @@
   Attachments:
     []
   DefaultScriptInputs:
-    -
-      {}
+    - internetModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      remoteMediaModule: !<reference.RemoteMediaModule> 00000000-0000-0000-0000-000000000000
+      url: "https://docs.snap.com/img/spectacles/spectacles-project-info-settings.png"
   ScriptTypes:
     -
       {}

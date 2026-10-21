@@ -1,4 +1,3 @@
-//@component
 // Reusable color helpers, exposed as `global.colorUtils`.
 // Place this on a SceneObject near the top of the Scene Hierarchy so it
 // initializes before any script that calls it.

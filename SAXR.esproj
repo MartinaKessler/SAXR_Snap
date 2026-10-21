@@ -13,7 +13,7 @@ metaInfo:
     []
   tags:
     []
-  lensName: World Lens
+  lensName: SAXR
   lensDescriptors:
     - AI_MUTATED
   lensApplicableContext:
@@ -27,8 +27,8 @@ metaInfo:
     - Mobile
     - CameraKit
   platformBundlesEnabled: false
-  iconHash: ""
-  videoPreviewHash: ""
+  iconHash: 89f55db8059ab13abf49431946d89613
+  videoPreviewHash: 5948950e28d50a96cf105d5e3e190d4e
   localizationsHash: ""
   fromTemplateName: World Lens
   fromTemplateUrl: Lens Studio 5.23.2.26081320
@@ -48,8 +48,8 @@ metaInfo:
     build: 0
   documentId: 81e818c5-8df4-4335-aae7-06103469f04b
   originalDocumentId: 4457688c-bbc9-4bd3-8fab-02820c58d58c
-  packageId: ""
-  packageVersion: ""
+  packageId: com.example.worldlens
+  packageVersion: 0.0.1
   spkPrivilegeLevel: Generic
   gluboEnabled: false
 targetPlatform: Snapchat
