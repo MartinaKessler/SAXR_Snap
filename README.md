@@ -11,7 +11,6 @@ All the scripts are in the folder [Assets/](Assets/).
 - [Prefabs](Assets/Prefabs/): prefabs for the DataRep shapes
 - [Scripts](Assets/Scripts/): Lens scripts
   - the scripts for loading a `datareps.json` and instantiating the prefabs in the scene.
-  - [CameraKit](Assets/Scripts/CameraKit/): scripts used for the Camera Kit
   - [Utils](Assets/Scripts/Utils/): utility functions
 - [Shaders](Assets/Shaders/): shaders
 - [Textures](Assets/Textures/): textures
