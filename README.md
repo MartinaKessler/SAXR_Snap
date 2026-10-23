@@ -1,19 +1,9 @@
-# Snap Implementation
+# Snap Implementation of SAXR
 
-## Folder Structure
+## Folders
+- [LensStudio](LensStudio/): Lens Studio project of the SAXR Lens
+- [CameraKit](CameraKit/): Web app (Vite + TypeScript) that runs the SAXR Lens in the browser using Camera Kit
 
-All the scripts are in the folder [Assets/](Assets/).
-
-- [Datasets](Assets/Datasets/): sample datasets, each with a `datareps.json` and panel/legend images
-- [Materials](Assets/Materials/): materials
-- [Meshes](Assets/Meshes/): meshes
-- [Modules](Assets/Modules/): modules
-- [Prefabs](Assets/Prefabs/): prefabs for the DataRep shapes
-- [Scripts](Assets/Scripts/): Lens scripts
-  - the scripts for loading a `datareps.json` and instantiating the prefabs in the scene.
-  - [Utils](Assets/Scripts/Utils/): utility functions
-- [Shaders](Assets/Shaders/): shaders
-- [Textures](Assets/Textures/): textures
 
 # SAXR: Situated Analytics in eXtended Reality
 
@@ -80,41 +70,41 @@ Example of a config.json file:
 
 ```json
 {
-	"description": "3D data viz of Iris data set.",
-	"title": "Iris",
-	"stage": {
-		"width": 0.8,
-		"height": 0.8,
-		"depth": 0.8
-	},
-	"data": {
-		"url": "../data/iris.json"
-	},
-	"assetURL": "$SERVER/run/vis/",
-	"output": "datareps.json",
-	"background": "#FFFFFF",
-	"gridColor": "#DDDE00",
-	"plot": "scatter",
-	"mark": "sphere",
-	"encoding": {
-		"x": {
-			"field": "sepal width"
-		},
-		"y": {
-			"field": "petal length"
-		},
-		"z": {
-			"field": "petal width"
-		},
-		"size": {
-			"value": 0.022
-		},
-		"color": {
-			"field": "class",
-			"title": "Iris Classes"
-		}
-	},
-	"panels": ["xy", "-xy", "zy", "-zy", "xz", "lc=_"]
+    "description": "3D data viz of Iris data set.",
+    "title": "Iris",
+    "stage": {
+        "width": 0.8,
+        "height": 0.8,
+        "depth": 0.8
+    },
+    "data": {
+        "url": "../data/iris.json"
+    },
+    "assetURL": "$SERVER/run/vis/",
+    "output": "datareps.json",
+    "background": "#FFFFFF",
+    "gridColor": "#DDDE00",
+    "plot": "scatter",
+    "mark": "sphere",
+    "encoding": {
+        "x": {
+            "field": "sepal width"
+        },
+        "y": {
+            "field": "petal length"
+        },
+        "z": {
+            "field": "petal width"
+        },
+        "size": {
+            "value": 0.022
+        },
+        "color": {
+            "field": "class",
+            "title": "Iris Classes"
+        }
+    },
+    "panels": ["xy", "-xy", "zy", "-zy", "xz", "lc=_"]
 }
 ```
 
@@ -124,26 +114,26 @@ Data Reps are a collection of simple representations of data elements that will 
 
 ```json
 [
-	{
-		"type": "-XY",
-		"x": 0.0,
-		"y": -0.014,
-		"z": 0.319,
-		"w": 1.193,
-		"d": 0,
-		"h": 0.567,
-		"asset": "$SERVER/run/vis/-xy.png"
-	},
-	{
-		"type": "cylinder",
-		"x": 0.0707,
-		"y": 0.0834,
-		"z": -0.2028,
-		"w": 0.0151,
-		"h": 0.1669,
-		"d": 0.015,
-		"color": "blue"
-	}
+    {
+        "type": "-XY",
+        "x": 0.0,
+        "y": -0.014,
+        "z": 0.319,
+        "w": 1.193,
+        "d": 0,
+        "h": 0.567,
+        "asset": "$SERVER/run/vis/-xy.png"
+    },
+    {
+        "type": "cylinder",
+        "x": 0.0707,
+        "y": 0.0834,
+        "z": -0.2028,
+        "w": 0.0151,
+        "h": 0.1669,
+        "d": 0.015,
+        "color": "blue"
+    }
 ]
 ```
 

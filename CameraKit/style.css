@@ -1,0 +1,11 @@
+body {
+    text-align: center;
+}
+
+#png-form {
+    margin: 8px 0;
+}
+
+#png-url {
+    width: min(500px, 80vw);
+}

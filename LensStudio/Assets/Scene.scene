@@ -370,7 +370,7 @@
     {}
   ScriptInputs:
     "":
-      jsonFile: !<reference.JsonAsset> f3bca60b-01a5-4105-89c3-76240439b148
+      jsonFile: !<reference.JsonAsset> 712a5b98-bd3d-4d79-a302-6ce5e7ad5e6f
       sphereSpawner: !<reference.ScriptComponent> 570283b4-6fec-4755-accb-8bd845993d06
       boxSpawner: !<reference.ScriptComponent> 1c1e74f5-f169-4223-8dd7-57c96fe0521c
       cylinderSpawner: !<reference.ScriptComponent> 71dede4a-68e4-40b1-b54a-1aeefe13b48b
@@ -385,7 +385,7 @@
   PrefabRemaps:
     []
   Name: DataRepsLoader
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -400,7 +400,7 @@
   PrefabRemaps:
     []
   Name: PrefabSpawner
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -784,7 +784,7 @@
   PrefabRemaps:
     []
   Name: Box
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
