@@ -35,6 +35,8 @@
     planeSpawner: false
     plusSpawner: false
     pyramidSpawner: false
+    quadSpawner: false
+    remoteMediaLoader: false
     sphereSpawner: false
   ScriptTypesHidden:
     {}
@@ -46,6 +48,7 @@
     []
   DefaultScriptInputs:
     - jsonFile: !<reference.JsonAsset> 00000000-0000-0000-0000-000000000000
+      remoteMediaLoader: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       sphereSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       boxSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       cylinderSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
@@ -53,6 +56,7 @@
       pyramidSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       octahedronSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       plusSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      quadSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}

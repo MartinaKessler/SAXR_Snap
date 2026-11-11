@@ -1,22 +1,26 @@
-//@input Asset.JsonAsset jsonFile
-//@input Component.ScriptComponent sphereSpawner
-//@input Component.ScriptComponent boxSpawner
-//@input Component.ScriptComponent cylinderSpawner
-//@input Component.ScriptComponent planeSpawner
-//@input Component.ScriptComponent pyramidSpawner
-//@input Component.ScriptComponent octahedronSpawner
-//@input Component.ScriptComponent plusSpawner
+// Loads the data representations (datareps.json) from a URL or a local file
+// and spawns each element with the matching spawner script
 
-function onStart() {
-    global.inputUtils.warnIfMissing(script, ["jsonFile", "sphereSpawner", "boxSpawner", "cylinderSpawner", "planeSpawner", "pyramidSpawner", "octahedronSpawner", "plusSpawner"]);
+// @input Asset.JsonAsset           jsonFile
+// @input Component.ScriptComponent remoteMediaLoader
+// @input Component.ScriptComponent sphereSpawner
+// @input Component.ScriptComponent boxSpawner
+// @input Component.ScriptComponent cylinderSpawner
+// @input Component.ScriptComponent planeSpawner
+// @input Component.ScriptComponent pyramidSpawner
+// @input Component.ScriptComponent octahedronSpawner
+// @input Component.ScriptComponent plusSpawner
+// @input Component.ScriptComponent quadSpawner
 
-    var jsonString = script.jsonFile.getString();
-    var data = JSON.parse(jsonString);
-
-    // TODO: generalize code for array with several elements
-    for (var obj of data[0]){
+/**
+ * Spawn all elements of the scene selected by global.config.sceneIndex
+ * @param {Array[]} data parsed datareps.json, one array of elements per scene
+ */
+function spawnDataReps(data){
+    // TODO: generalize code for array with several elements (stage & scenes)
+    for (var obj of data[global.config.sceneIndex]){
         // TODO: implement upper case stage elements separately
-        var type = obj.type.toLowerCase(); 
+        var type = obj.type.toLowerCase();
 
         if (type === "sphere"){
             if (obj.w !== obj.h || obj.w !== obj.d) {
@@ -87,6 +91,17 @@ function onStart() {
             script.boxSpawner.spawnObject({ position: midPoint, rotation: rotation, scale: scale, color: color });
         }
 
+        if (type === "area"){
+            var midPoint = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
+            var upperRight = midPoint.add(global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d).uniformScale(0.5)));
+            var upperLeft = midPoint.add(global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d).uniformScale(-0.5)));
+            // TODO: add y offset of xz plane, or check if offset is always at 0
+            var lowerLeft = new vec3(upperLeft.x, 0, upperLeft.z);
+            var lowerRight = new vec3(upperRight.x, 0, upperRight.z);
+            var color = global.colorUtils.toColor(obj.color);
+            script.quadSpawner.spawnQuad({ corners: [upperLeft, upperRight, lowerRight, lowerLeft], color: color });
+        }
+
         if (type === "xz"){
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
             var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
@@ -99,7 +114,7 @@ function onStart() {
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y + 0.5 * obj.h, obj.z));
 
             // swap d and h, because the plane in Lens Studio has extensions in width & height
-            var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h)); 
+            var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h));
             script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
         }
 
@@ -114,10 +129,24 @@ function onStart() {
             // TODO: document this in the repository
             var position = global.constants.toWorldScale(new vec3(obj.x, obj.y + 0.5 * obj.h, obj.z));
             // swap d and h, because the plane in Lens Studio has extensions in width & height
-            var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h)); 
+            var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h));
             script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
         }
     }
 }
 
-script.createEvent("OnStartEvent").bind(onStart); 
+function onStart() {
+    global.inputUtils.warnIfMissing(script, ["jsonFile", "remoteMediaLoader", "sphereSpawner", "boxSpawner", "cylinderSpawner", "planeSpawner", "pyramidSpawner", "octahedronSpawner", "plusSpawner", "quadSpawner"]);
+
+    if (global.config.useUrl){
+        script.remoteMediaLoader.loadJson(global.config.jsonUrl, spawnDataReps);
+    }
+    else {
+        var jsonString = script.jsonFile.getString();
+        var data = JSON.parse(jsonString);
+        spawnDataReps(data);
+    }
+
+}
+
+script.createEvent("OnStartEvent").bind(onStart);

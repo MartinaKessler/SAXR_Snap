@@ -1,0 +1,8 @@
+- add tap on screen or programatically initiate it to ask for motion tracking permissions on mobile device
+- explain set up of how to upload a lens to developer portal
+- improve main.ts code, make it robust
+- Code review feedback Philipp (written down on separate sheet of paper)
+- make documentation consistent (explain all parameters, return values, etc.)
+- implement placement of the scene in the world?
+- maybe publish the examples as one hardcoded Snap Lens, switching between the different data sets
+- debug iris LOD scenes 0 & 1

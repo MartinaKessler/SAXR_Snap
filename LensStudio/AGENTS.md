@@ -91,3 +91,67 @@ The Preview Panel shows live runtime transforms; the Scene Panel shows authored 
 Verify assumptions early — a quick prototype can save hours of debugging a plan built on wrong foundations. Build incrementally: confirm each layer renders before adding the next.
 
 <!-- END Lens Studio managed AGENTS block -->
+
+## Documentation Guideline
+
+Applies to all scripts in `Assets/Scripts/`.
+
+### Comments
+
+- One statement per line, no period at the end
+  - Exception: longer running text with several sentences uses normal punctuation
+- Every script starts with a header comment: what it does and, if relevant, where to place it
+  ```js
+  // Reusable color helpers, exposed as `global.colorUtils`
+  // Place this on a SceneObject near the top of the scene hierarchy so it initializes before any script that calls it
+  ```
+- Comments describe what the code does now, update them when the code changes
+
+### JSDoc
+
+Every function that other scripts call (exposed via `script.x = ...` or `global.x = {...}`) gets a JSDoc block:
+
+```js
+/**
+ * Set color and/or texture on all RenderMeshVisuals of obj including all children
+ * The material is cloned so other objects sharing it are not affected
+ * Visuals on child objects (e.g. Octahedron = two halves) all get the same clone
+ * @param   {SceneObject}   obj
+ * @param   {Object}        options
+ * @param   {vec4}          [options.color]   base color (r,g,b,a)
+ * @param   {Asset.Texture} [options.texture] base texture
+ * @returns {boolean}                         false if obj has no RenderMeshVisual with a material
+ */
+```
+
+- Summary lines first, one statement per line
+- Optional parameters in square brackets, e.g. `[options.color]`
+- `@returns` always has a description, including special values such as `null`
+- Align the tag lines in four columns:
+  1. Tag: `@param` is padded to the width of `@returns` if the block has one
+  2. Type: padded to the widest type
+  3. Name: padded to the widest name
+  4. Description: one space after the widest name, `@returns` descriptions start in the same column
+
+### Inputs
+
+Align type, name and `=` of consecutive `@input` lines:
+
+```js
+// @input bool   useUrl     = true
+// @input string jsonUrl    = "https://service.metason.net/ar/content/viz/irisLOD/datareps.json"
+// @input int    sceneIndex = 0
+```
+
+### Lookup tables
+
+Align the values of object literals that act as tables (e.g. `namedColors`, `planeRotations`):
+
+```js
+var planeRotations = {
+    "xz":  quat.fromEulerAngles(0, 0, 0),
+    "-xy": quat.fromEulerAngles(Math.PI / 2, Math.PI, 0),
+};
+```
+
+Regular code inside function bodies is not aligned.

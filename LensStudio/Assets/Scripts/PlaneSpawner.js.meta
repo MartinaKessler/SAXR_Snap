@@ -29,6 +29,7 @@
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     planePrefab: false
+    remoteMediaLoader: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -39,6 +40,7 @@
     []
   DefaultScriptInputs:
     - planePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      remoteMediaLoader: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}

@@ -1,19 +1,17 @@
-// Reusable prefab-spawning helper.
-// Place this on a SceneObject ABOVE any script that depends on it in the
-// Scene Hierarchy so it initializes first. Other scripts call it via an
-// explicit input Component.ScriptComponent prefabSpawner reference,
-// or fall back to `global.prefabSpawner`.
+// Reusable prefab-spawning helper, exposed as `global.prefabSpawner`
+// Place this on a SceneObject near the top of the scene hierarchy so it initializes before any script that calls it
+// Other scripts call it via an input Component.ScriptComponent prefabSpawner or via `global.prefabSpawner`
 
 /**
- * Instantiate a prefab and set up its transform / material.
- * @param {ObjectPrefab}  prefab              prefab asset to instantiate
- * @param {Object}        options
- * @param {vec3}          [options.position]  world position
- * @param {quat}          [options.rotation]  world rotation, e.g. quat.fromEulerAngles(x, y, z) in radians
- * @param {number|vec3}   [options.scale]     uniform scale (number) or per-axis scale (vec3)
- * @param {vec4}          [options.color]     color (r,g,b,a); the instance gets its own cloned material
- * @param {Asset.Texture} [options.texture]   base texture, the instance gets its own cloned material
- * @returns {SceneObject}
+ * Instantiate a prefab and set up its transform/material
+ * @param   {ObjectPrefab}  prefab             prefab asset to instantiate
+ * @param   {Object}        options
+ * @param   {vec3}          [options.position] world position
+ * @param   {quat}          [options.rotation] world rotation, e.g. quat.fromEulerAngles(x, y, z) in radians, missing keeps the prefab's own orientation
+ * @param   {number|vec3}   [options.scale]    uniform scale (number) or per-axis scale (vec3)
+ * @param   {vec4}          [options.color]    base color (r,g,b,a), the object gets its own cloned material
+ * @param   {Asset.Texture} [options.texture]  base texture, the object gets its own cloned material
+ * @returns {SceneObject}                      the spawned instance
  */
 function spawnPrefab(prefab, options) {
     if (!prefab) {
@@ -45,6 +43,5 @@ function spawnPrefab(prefab, options) {
     return obj;
 }
 
-// expose for other scripts
 script.spawnPrefab = spawnPrefab;
 global.prefabSpawner = script;

@@ -30,7 +30,7 @@
   ScriptInputsHidden:
     internetModule: false
     remoteMediaModule: false
-    url: false
+    textureUrl: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -42,7 +42,7 @@
   DefaultScriptInputs:
     - internetModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
       remoteMediaModule: !<reference.RemoteMediaModule> 00000000-0000-0000-0000-000000000000
-      url: "https://docs.snap.com/img/spectacles/spectacles-project-info-settings.png"
+      textureUrl: "https://service.metason.net/ar/content/viz/irisLOD/lc.png"
   ScriptTypes:
     -
       {}

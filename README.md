@@ -1,8 +1,8 @@
 # Snap Implementation of SAXR
 
 ## Folders
-- [LensStudio](LensStudio/): Lens Studio project of the SAXR Lens
-- [CameraKit](CameraKit/): Web app (Vite + TypeScript) that runs the SAXR Lens in the browser using Camera Kit
+- [LensStudio](LensStudio/README.md): Lens Studio project of the SAXR Lens
+- [CameraKit](CameraKit/README.md): Web app (Vite + TypeScript) that runs the SAXR Lens in the browser using Camera Kit
 
 
 # SAXR: Situated Analytics in eXtended Reality

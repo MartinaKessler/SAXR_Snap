@@ -263,11 +263,26 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<SceneObject/0b1ace25-05db-4b0f-83f6-d8c9942e7498>
+  PrefabRemaps:
+    []
+  Name: RemoteMediaLoader
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 164bac00-22a0-4ca0-a98f-974b9905b68c
 - !<SceneObject/0d12da9f-f58d-47a9-b781-5e610474ee37>
   PrefabRemaps:
     []
   Name: "-zy"
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: -0.400000, y: 0.459000, z: 0.000000}
@@ -310,6 +325,24 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/164bac00-22a0-4ca0-a98f-974b9905b68c>
+  PrefabRemaps:
+    []
+  Name: RemoteMediaLoader
+  Enabled: true
+  ScriptAsset: !<reference> c3aeeb58-7397-4fdf-bf72-1d08fca7b6f4
+  ScriptInputsDefault:
+    textureUrl: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      internetModule: !<reference.InternetModule> a09eb2dd-9781-4e26-a523-2db9e51d2476
+      remoteMediaModule: !<reference.RemoteMediaModule> 0600f675-6b91-4d87-b70b-eef4c54c729e
+      textureUrl: "https://service.metason.net/ar/content/viz/irisLOD/lc.png"
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/1881e90e-a26a-42d2-8bc5-f3e22e0038fa>
   PrefabRemaps:
     - 1881e90e-a26a-42d2-8bc5-f3e22e0038fa: b0e38f34-f932-4c88-4b2b-5995deef2595
@@ -330,7 +363,7 @@
   PrefabRemaps:
     []
   Name: "zy: y = y + h / 2"
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.400000, y: 0.459000, z: 0.000000}
@@ -370,7 +403,8 @@
     {}
   ScriptInputs:
     "":
-      jsonFile: !<reference.JsonAsset> 712a5b98-bd3d-4d79-a302-6ce5e7ad5e6f
+      jsonFile: !<reference.JsonAsset> 278a2311-7385-40e7-8531-208a93e7660f
+      remoteMediaLoader: !<reference.ScriptComponent> 164bac00-22a0-4ca0-a98f-974b9905b68c
       sphereSpawner: !<reference.ScriptComponent> 570283b4-6fec-4755-accb-8bd845993d06
       boxSpawner: !<reference.ScriptComponent> 1c1e74f5-f169-4223-8dd7-57c96fe0521c
       cylinderSpawner: !<reference.ScriptComponent> 71dede4a-68e4-40b1-b54a-1aeefe13b48b
@@ -378,6 +412,7 @@
       pyramidSpawner: !<reference.ScriptComponent> 76457fac-10af-465f-98fc-b7d620f6cda6
       octahedronSpawner: !<reference.ScriptComponent> 777574a8-caed-43a0-90f1-ce2186d90586
       plusSpawner: !<reference.ScriptComponent> 6c4ef9bc-7ddd-4b4f-81c0-07e136ec52fc
+      quadSpawner: !<reference.ScriptComponent> 389ad49c-60c4-431b-b83a-6691aea9093c
   ScriptTypes:
     "":
       {}
@@ -385,7 +420,7 @@
   PrefabRemaps:
     []
   Name: DataRepsLoader
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -400,7 +435,7 @@
   PrefabRemaps:
     []
   Name: PrefabSpawner
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -415,6 +450,7 @@
     - !<own> 472a89d5-653a-4e59-b0f6-e76f59300e3d
     - !<own> 5919875f-fdd5-4dec-8398-468117621c60
     - !<own> 11dca15c-26c5-4053-a867-a7906dcafa3f
+    - !<own> 9925b1e3-d7ea-415d-9cad-613341651e31
   Components:
     - !<own> 3800dc86-8f8e-4b04-ab95-0609874846c3
 - !<ScriptComponent/3800dc86-8f8e-4b04-ab95-0609874846c3>
@@ -430,6 +466,22 @@
   ScriptInputs:
     "":
       {}
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/389ad49c-60c4-431b-b83a-6691aea9093c>
+  PrefabRemaps:
+    []
+  Name: QuadSpawner
+  Enabled: true
+  ScriptAsset: !<reference> 37683117-aa4e-4ef0-abb1-4f3bc740465b
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      material: !<reference.Material> bb5cf0f5-71d6-4550-bfe6-8c60844bc1be
   ScriptTypes:
     "":
       {}
@@ -528,7 +580,7 @@
   PrefabRemaps:
     []
   Name: xz origin
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.003000, y: -0.000000, z: 0.019000}
@@ -577,18 +629,18 @@
 - !<ScriptComponent/52cadc4a-0d68-46f3-9b75-793569083811>
   PrefabRemaps:
     []
-  Name: RemoteTexture
+  Name: RemoteMediaLoader
   Enabled: true
   ScriptAsset: !<reference> c3aeeb58-7397-4fdf-bf72-1d08fca7b6f4
   ScriptInputsDefault:
-    {}
+    textureUrl: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       internetModule: !<reference.InternetModule> a09eb2dd-9781-4e26-a523-2db9e51d2476
       remoteMediaModule: !<reference.RemoteMediaModule> 0600f675-6b91-4d87-b70b-eef4c54c729e
-      url: "https://service.metason.net/ar/content/viz/irisLOD/lc.png"
+      textureUrl: "https://service.metason.net/ar/content/viz/irisLOD/lc.png"
   ScriptTypes:
     "":
       {}
@@ -784,7 +836,7 @@
   PrefabRemaps:
     []
   Name: Box
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -939,7 +991,7 @@
   PrefabRemaps:
     []
   Name: xz
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.003000, y: 0.000000, z: 0.019000}
@@ -955,7 +1007,7 @@
   PrefabRemaps:
     []
   Name: xy-plane origin
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: -0.008000, z: -0.400000}
@@ -1007,7 +1059,7 @@
     - 7010437c-b26d-415d-b428-323b0c50968a: c340d950-2530-45e8-689e-f377904b0635
     - 9863b0f3-f8ae-4542-90f2-a1c3add2400a: d3bf3295-3db6-4cf8-6a2d-93ba05e33a13
   Name: Box
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -1018,6 +1070,21 @@
     []
   Components:
     - !<own> 7010437c-b26d-415d-b428-323b0c50968a
+- !<SceneObject/9925b1e3-d7ea-415d-9cad-613341651e31>
+  PrefabRemaps:
+    []
+  Name: QuadSpawner
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 389ad49c-60c4-431b-b83a-6691aea9093c
 - !<RenderMeshVisual/9960cddd-0850-4261-9a07-a54cbd123acf>
   PrefabRemaps:
     []
@@ -1092,7 +1159,7 @@
   PrefabRemaps:
     []
   Name: zy-plane origin
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.400000, y: -0.008000, z: 0.000000}
@@ -1364,6 +1431,7 @@
     HasSegmentScaleCompensation: false
   Children:
     - !<own> f4dbdacd-d75f-4d0d-863b-cdd1f269522a
+    - !<own> 0b1ace25-05db-4b0f-83f6-d8c9942e7498
     - !<own> 29e2bbc4-ea09-44e6-a0d7-5d19e48de8de
     - !<own> 29e889e0-fbbb-4cba-9795-86edfb4824b6
   Components:
@@ -1468,6 +1536,7 @@
   ScriptInputs:
     "":
       planePrefab: !<reference.ObjectPrefab> 54bbeb7a-9583-432b-9f0c-7a8f87d34164
+      remoteMediaLoader: !<reference.ScriptComponent> 164bac00-22a0-4ca0-a98f-974b9905b68c
   ScriptTypes:
     "":
       {}
@@ -1533,6 +1602,25 @@
   Components:
     - !<own> 6f9e5546-d4c5-49e7-8e04-e8a195ad0d33
     - !<own> f92bd6f4-566e-4242-ac1b-47b3d6ab4488
+- !<ScriptComponent/e2a1d4bf-b171-41ee-b5c5-629ebc2d69f5>
+  PrefabRemaps:
+    []
+  Name: Config
+  Enabled: true
+  ScriptAsset: !<reference> 3f742bf9-70ae-46d7-9c5a-8c35c778616a
+  ScriptInputsDefault:
+    useUrl: true
+    jsonUrl: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      useUrl: true
+      jsonUrl: "https://service.metason.net/ar/content/viz/irisLOD/datareps.json"
+      sceneIndex: 2
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/e57c4083-6a9c-4568-bf73-5737f3b2f486>
   PrefabRemaps:
     []
@@ -1617,9 +1705,10 @@
   Children:
     []
   Components:
-    - !<own> 68664c0b-4902-4691-ae9d-7843170ff31d
     - !<own> c9fdae88-1bf3-49be-b5b4-248530e2cd3a
+    - !<own> e2a1d4bf-b171-41ee-b5c5-629ebc2d69f5
     - !<own> 5bbcafed-3231-4c17-8281-851d95e55fe2
+    - !<own> 68664c0b-4902-4691-ae9d-7843170ff31d
     - !<own> 1279d6c3-61d4-4184-83a3-53712420e2e8
 - !<SceneObject/f9068e87-3f87-49a7-8102-787fac42e074>
   PrefabRemaps:

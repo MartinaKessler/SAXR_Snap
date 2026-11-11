@@ -1,12 +1,11 @@
-// Reusable material helpers, exposed as `global.materialUtils`.
-// Place this on a SceneObject near the top of the Scene Hierarchy so it
-// initializes before any script that calls it.
+// Reusable material helpers, exposed as `global.materialUtils`
+// Place this on a SceneObject near the top of the scene hierarchy so it initializes before any script that calls it
 
 /**
  * Collect the RenderMeshVisuals of obj and all its children
- * @param {SceneObject} obj
- * @param {RenderMeshVisual[]} result  array to append to (pass [] on the first call)
- * @returns {RenderMeshVisual[]}
+ * @param   {SceneObject}        obj
+ * @param   {RenderMeshVisual[]} result array to append to (pass [] on the first call)
+ * @returns {RenderMeshVisual[]}        the filled result array
  */
 function findRenderMeshVisuals(obj, result) {
     var rmv = obj.getComponent("Component.RenderMeshVisual");
@@ -20,14 +19,14 @@ function findRenderMeshVisuals(obj, result) {
 }
 
 /**
- * Set color and/or texture on all RenderMeshVisuals of obj (incl. children).
- * The material is cloned so other objects sharing it are not affected;
- * visuals on child objects (e.g. Octahedron = two halves) all get the same clone.
- * @param {SceneObject}   obj
- * @param {Object}        options
- * @param {vec4}          [options.color]    base color (r,g,b,a)
- * @param {Asset.Texture} [options.texture]  base texture
- * @returns {boolean} false if obj has no RenderMeshVisual with a material
+ * Set color and/or texture on all RenderMeshVisuals of obj including all children
+ * The material is cloned so other objects sharing it are not affected
+ * Visuals on child objects (e.g. Octahedron = two halves) all get the same clone
+ * @param   {SceneObject}   obj
+ * @param   {Object}        options
+ * @param   {vec4}          [options.color]   base color (r,g,b,a), the object gets its own cloned material
+ * @param   {Asset.Texture} [options.texture] base texture, the object gets its own cloned material
+ * @returns {boolean}                         false if obj has no RenderMeshVisual with a material
  */
 function applyMaterialProperties(obj, options) {
     var visuals = findRenderMeshVisuals(obj, []);

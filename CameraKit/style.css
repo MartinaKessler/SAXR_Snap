@@ -2,10 +2,10 @@ body {
     text-align: center;
 }
 
-#png-form {
+#json-form {
     margin: 8px 0;
 }
 
-#png-url {
+#json-url {
     width: min(500px, 80vw);
 }

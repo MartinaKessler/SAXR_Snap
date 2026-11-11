@@ -1,5 +1,5 @@
-// Sets the base texture of this SceneObject's RenderMeshVisual material.
-// Add this script to a SceneObject that has a RenderMeshVisual.
+// Sets the base texture of this SceneObject's RenderMeshVisual material
+// Add this script to a SceneObject that has a RenderMeshVisual
 
 // @input Asset.Texture texture
 
@@ -14,9 +14,9 @@ function setTexture(texture) {
     }
 }
 
-// expose so other scripts can change the texture at runtime
 script.setTexture = setTexture;
 
 script.createEvent("OnStartEvent").bind(function () {
+    global.inputUtils.warnIfMissing(script, ["texture"]);
     setTexture(script.texture);
 });
