@@ -128,7 +128,6 @@ function spawnPlaneOfType(type, options) {
         return null;
     }
     else{
-        console.log("options.textureName: " + options.textureName);
         return spawnPlane({
             position: options.position,
             rotation: rotation,

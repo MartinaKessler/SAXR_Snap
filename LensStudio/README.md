@@ -1,6 +1,6 @@
 # Lens Studio
 
-This Lens Studio Project implements the SAXR Lens, where a `datareps.json` can be displayed in AR. It is used in combination with 
+This Lens Studio Project implements the SAXR Lens, where a `datareps.json` can be displayed in AR.
 
 ## Folder Structure
 

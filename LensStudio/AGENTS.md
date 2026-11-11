@@ -155,3 +155,6 @@ var planeRotations = {
 ```
 
 Regular code inside function bodies is not aligned.
+
+## SAXR Specification
+The SAXR spec (Data Reps fields, panel names, legend codes) is available at https://github.com/metason/SAXR. Fetch it when you need format details.

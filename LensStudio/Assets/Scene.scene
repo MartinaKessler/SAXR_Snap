@@ -403,7 +403,7 @@
     {}
   ScriptInputs:
     "":
-      jsonFile: !<reference.JsonAsset> 278a2311-7385-40e7-8531-208a93e7660f
+      jsonFile: !<reference.JsonAsset> f3bca60b-01a5-4105-89c3-76240439b148
       remoteMediaLoader: !<reference.ScriptComponent> 164bac00-22a0-4ca0-a98f-974b9905b68c
       sphereSpawner: !<reference.ScriptComponent> 570283b4-6fec-4755-accb-8bd845993d06
       boxSpawner: !<reference.ScriptComponent> 1c1e74f5-f169-4223-8dd7-57c96fe0521c
