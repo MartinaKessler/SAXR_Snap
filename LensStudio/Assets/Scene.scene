@@ -403,7 +403,6 @@
     {}
   ScriptInputs:
     "":
-      jsonFile: !<reference.JsonAsset> f3bca60b-01a5-4105-89c3-76240439b148
       remoteMediaLoader: !<reference.ScriptComponent> 164bac00-22a0-4ca0-a98f-974b9905b68c
       sphereSpawner: !<reference.ScriptComponent> 570283b4-6fec-4755-accb-8bd845993d06
       boxSpawner: !<reference.ScriptComponent> 1c1e74f5-f169-4223-8dd7-57c96fe0521c
@@ -1609,15 +1608,15 @@
   Enabled: true
   ScriptAsset: !<reference> 3f742bf9-70ae-46d7-9c5a-8c35c778616a
   ScriptInputsDefault:
-    useUrl: true
     jsonUrl: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      useUrl: true
+      useUrl: false
       jsonUrl: "https://service.metason.net/ar/content/viz/irisLOD/datareps.json"
-      sceneIndex: 2
+      jsonFile: !<reference.JsonAsset> 1505605f-9e1f-4162-be8a-fbaf0319dd3f
+      sceneIndex: 1
   ScriptTypes:
     "":
       {}

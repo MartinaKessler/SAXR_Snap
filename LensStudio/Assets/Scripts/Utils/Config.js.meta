@@ -28,6 +28,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    jsonFile: false
     jsonUrl: false
     sceneIndex: false
     useUrl: false
@@ -42,6 +43,7 @@
   DefaultScriptInputs:
     - useUrl: true
       jsonUrl: "https://service.metason.net/ar/content/viz/irisLOD/datareps.json"
+      jsonFile: !<reference.JsonAsset> 00000000-0000-0000-0000-000000000000
       sceneIndex: 0
   ScriptTypes:
     -

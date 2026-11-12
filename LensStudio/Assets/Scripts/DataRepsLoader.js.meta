@@ -30,7 +30,6 @@
   ScriptInputsHidden:
     boxSpawner: false
     cylinderSpawner: false
-    jsonFile: false
     octahedronSpawner: false
     planeSpawner: false
     plusSpawner: false
@@ -47,8 +46,7 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - jsonFile: !<reference.JsonAsset> 00000000-0000-0000-0000-000000000000
-      remoteMediaLoader: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+    - remoteMediaLoader: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       sphereSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       boxSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       cylinderSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000

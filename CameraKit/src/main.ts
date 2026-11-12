@@ -28,11 +28,11 @@ try {
       facingMode: "environment",
     },
   });
-} catch (err) {
+} catch (e) {
   alert(
     "The lens can't be used because no camera is connected. Connect a camera, then reload the page."
   );
-  throw err;
+  throw e;
 }
 
 const source = createMediaStreamSource(mediaStream, {

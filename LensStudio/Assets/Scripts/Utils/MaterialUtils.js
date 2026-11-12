@@ -1,6 +1,8 @@
 // Reusable material helpers, exposed as `global.materialUtils`
 // Place this on a SceneObject near the top of the scene hierarchy so it initializes before any script that calls it
 
+var transparentCount = 0;
+
 /**
  * Collect the RenderMeshVisuals of obj and all its children
  * @param   {SceneObject}        obj
@@ -41,10 +43,24 @@ function applyMaterialProperties(obj, options) {
     if (options.texture) {
         mat.mainPass.baseTex = options.texture;
     }
+
     for (var i = 0; i < visuals.length; i++) {
         visuals[i].clearMaterials();
         visuals[i].addMaterial(mat);
+        if (options.color && options.color.a < 1) {
+            // opaque objects keep render order 0 and are drawn first
+            // transparent objects get render order 1 + transparentCount and are drawn afterwards
+            // drawing transparent objects last ensures opaque objects inside them stay visible
+            // a fixed render order per transparent object stops Lens Studio from re-sorting them by camera distance, which caused flickering when the scene is rotated
+            // limitation: where transparent objects intersect, the fixed order can look wrong from some angles
+            visuals[i].setRenderOrder(1 + transparentCount);
+        }
     }
+
+    if (options.color && options.color.a < 1) {
+        transparentCount++;
+    }
+
     return true;
 }
 

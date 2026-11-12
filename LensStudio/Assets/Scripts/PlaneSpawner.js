@@ -4,14 +4,24 @@
 // @input Asset.ObjectPrefab        planePrefab
 // @input Component.ScriptComponent remoteMediaLoader
 
-var planeTextures = {
+var planeTextures = { 
     // // iris
     // "xy.png":  requireAsset("../Datasets/iris/xy.png"),
     // "-xy.png": requireAsset("../Datasets/iris/-xy.png"),
     // "xz.png":  requireAsset("../Datasets/iris/xz.png"),
+    // "xz.png":  requireAsset("../Datasets/irisLOD/xz.png"),
     // "zy.png":  requireAsset("../Datasets/iris/zy.png"),
     // "-zy.png": requireAsset("../Datasets/iris/-zy.png"),
     // "lc.png":  requireAsset("../Datasets/iris/lc.png"),
+
+    // irisLOD
+    "xy.png":  requireAsset("../Datasets/irisLOD/xy.png"),
+    "-xy.png": requireAsset("../Datasets/irisLOD/-xy.png"),
+    "xz.png":  requireAsset("../Datasets/irisLOD/xz.png"),
+    "xz+s.png":  requireAsset("../Datasets/irisLOD/xz+s.png"),
+    "zy.png":  requireAsset("../Datasets/irisLOD/zy.png"),
+    "-zy.png": requireAsset("../Datasets/irisLOD/-zy.png"),
+    "lc.png":  requireAsset("../Datasets/irisLOD/lc.png"),
 
     // // iris
     // "https://service.metason.net/ar/content/viz/irisLOD/xy.png":  requireAsset("../Datasets/iris/xy.png"),
@@ -21,12 +31,12 @@ var planeTextures = {
     // "https://service.metason.net/ar/content/viz/irisLOD/-zy.png": requireAsset("../Datasets/iris/-zy.png"),
     // "https://service.metason.net/ar/content/viz/irisLOD/lc.png":  requireAsset("../Datasets/iris/lc.png"),
 
-    // area
-    "xy.png":  requireAsset("../Datasets/area/xy.png"),
-    "-xy.png": requireAsset("../Datasets/area/-xy.png"),
-    "xz.png":  requireAsset("../Datasets/area/xz.png"),
-    "zy.png":  requireAsset("../Datasets/area/zy.png"),
-    "-zy.png": requireAsset("../Datasets/area/-zy.png"),
+    // // area
+    // "xy.png":  requireAsset("../Datasets/area/xy.png"),
+    // "-xy.png": requireAsset("../Datasets/area/-xy.png"),
+    // "xz.png":  requireAsset("../Datasets/area/xz.png"),
+    // "zy.png":  requireAsset("../Datasets/area/zy.png"),
+    // "-zy.png": requireAsset("../Datasets/area/-zy.png"),
 
     // // burnout
     // "xy.png": requireAsset("../Datasets/burnout/xy.png"),
@@ -116,7 +126,7 @@ function spawnPlaneOfType(type, options) {
         print("Warning: unknown plane type: " + type);
         return null;
     }
-    if (global.config.useUrl){
+    if (global.config.useUrl) {
         resolveTexture({
                 position: options.position,
                 rotation: rotation,
@@ -127,7 +137,7 @@ function spawnPlaneOfType(type, options) {
         // the plane is spawned asynchronously once the texture has loaded
         return null;
     }
-    else{
+    else {
         return spawnPlane({
             position: options.position,
             rotation: rotation,
@@ -163,10 +173,10 @@ function spawnPlane(options) {
 function resolveTexture(options) {
     if (!options.textureName) return null;
     
-    if (global.config.useUrl){
+    if (global.config.useUrl) {
         script.remoteMediaLoader.loadTexture(spawnPlane, options);
     }
-    else{
+    else {
         var texture = planeTextures[options.textureName];
         // var texture = script.remoteMediaLoader.loadTexture(spawnPlane, options);
         if (!texture) {

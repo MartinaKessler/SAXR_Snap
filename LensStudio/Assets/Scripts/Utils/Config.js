@@ -3,6 +3,7 @@
 
 // @input bool   useUrl     = true
 // @input string jsonUrl    = "https://service.metason.net/ar/content/viz/irisLOD/datareps.json"
+// @input Asset.JsonAsset   jsonFile
 // @input int    sceneIndex = 0
 
 // prefer a "url" launch parameter passed by the Camera Kit host app
@@ -19,9 +20,10 @@ function getJsonUrl() {
 global.config = {
     useUrl: script.useUrl,
     jsonUrl: getJsonUrl(),
+    jsonFile: script.jsonFile,
     sceneIndex: script.sceneIndex,
 };
 
 script.createEvent("OnStartEvent").bind(function () {
-    global.inputUtils.warnIfMissing(script, ["useUrl", "jsonUrl", "sceneIndex"]);
+    global.inputUtils.warnIfMissing(script, ["useUrl", "jsonUrl", "jsonFile", "sceneIndex"]);
 });

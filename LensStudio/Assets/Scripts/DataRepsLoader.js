@@ -1,7 +1,6 @@
 // Loads the data representations (datareps.json) from a URL or a local file
 // and spawns each element with the matching spawner script
 
-// @input Asset.JsonAsset           jsonFile
 // @input Component.ScriptComponent remoteMediaLoader
 // @input Component.ScriptComponent sphereSpawner
 // @input Component.ScriptComponent boxSpawner
@@ -16,13 +15,13 @@
  * Spawn all elements of the scene selected by global.config.sceneIndex
  * @param {Array[]} data parsed datareps.json, one array of elements per scene
  */
-function spawnDataReps(data){
+function spawnDataReps(data) {
     // TODO: generalize code for array with several elements (stage & scenes)
-    for (var obj of data[global.config.sceneIndex]){
+    for (var obj of data[global.config.sceneIndex]) {
         // TODO: implement upper case stage elements separately
         var type = obj.type.toLowerCase();
 
-        switch (type){
+        switch (type) {
             case "sphere":
                 if (obj.w !== obj.h || obj.w !== obj.d) {
                     print("Warning: sphere dimensions are not equal");
@@ -54,7 +53,7 @@ function spawnDataReps(data){
                 var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 var color = global.colorUtils.toColor(obj.color);
                 var rotation = null;
-                if (type === "pyramid_down"){
+                if (type === "pyramid_down") {
                     rotation = quat.fromEulerAngles(Math.PI, 0, 0);
                 }
                 script.pyramidSpawner.spawnObject({ position: position, rotation: rotation, scale: scale, color: color });
@@ -73,7 +72,7 @@ function spawnDataReps(data){
                 var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 var color = global.colorUtils.toColor(obj.color);
                 var rotation = null;
-                if (type === "cross"){
+                if (type === "cross") {
                     rotation = quat.fromEulerAngles(0, 0, Math.PI / 4);
                 }
                 script.plusSpawner.spawnObject({ position: position, rotation: rotation, scale: scale, color: color });
@@ -86,7 +85,7 @@ function spawnDataReps(data){
                 var length = direction.length;
                 var scale = new vec3(global.constants.LINE_WIDTH, length, global.constants.LINE_WIDTH);
                 var rotation = null;
-                if (length > 1e-6){
+                if (length > 1e-6) {
                     rotation = quat.rotationFromTo(new vec3(0, 1, 0), direction.normalize());
                 }
                 script.boxSpawner.spawnObject({ position: midPoint, rotation: rotation, scale: scale, color: color });
@@ -123,12 +122,12 @@ function spawnDataReps(data){
                 break;
         
         default:
-            if (script.planeSpawner.flatLegendPattern.test(type)){
+            if (script.planeSpawner.flatLegendPattern.test(type)) {
                 var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
                 var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
             }
-            else if (script.planeSpawner.uprightLegendPattern.test(type)){
+            else if (script.planeSpawner.uprightLegendPattern.test(type)) {
                 // plane origin is at the lower edge -> shift up by half the height
                 // TODO: document this in the repository
                 var position = global.constants.toWorldScale(new vec3(obj.x, obj.y + 0.5 * obj.h, obj.z));
@@ -136,7 +135,7 @@ function spawnDataReps(data){
                 var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h));
                 script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
             }
-            else{
+            else {
                 print("Warning: unknown data rep type " + type);
             }
         }
@@ -144,13 +143,13 @@ function spawnDataReps(data){
 }
 
 function onStart() {
-    global.inputUtils.warnIfMissing(script, ["jsonFile", "remoteMediaLoader", "sphereSpawner", "boxSpawner", "cylinderSpawner", "planeSpawner", "pyramidSpawner", "octahedronSpawner", "plusSpawner", "quadSpawner"]);
+    global.inputUtils.warnIfMissing(script, ["remoteMediaLoader", "sphereSpawner", "boxSpawner", "cylinderSpawner", "planeSpawner", "pyramidSpawner", "octahedronSpawner", "plusSpawner", "quadSpawner"]);
 
-    if (global.config.useUrl){
+    if (global.config.useUrl) {
         script.remoteMediaLoader.loadJson(global.config.jsonUrl, spawnDataReps);
     }
     else {
-        var jsonString = script.jsonFile.getString();
+        var jsonString = global.config.jsonFile.getString();
         var data = JSON.parse(jsonString);
         spawnDataReps(data);
     }

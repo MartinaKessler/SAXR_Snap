@@ -16,7 +16,8 @@ function loadResource(url) {
     var resource;
     try {
         resource = script.internetModule.makeResourceFromUrl(url);
-    } catch (e) {
+    }
+    catch (e) {
         print("RemoteMedia: makeResourceFromUrl failed for " + url + ": " + e);
         return;
     }
@@ -41,12 +42,12 @@ function loadTexture(onLoaded, options) {
         resource,
         function (texture) {
             print("RemoteTexture: loaded " + url);
-            if (onLoaded){
-                try{
+            if (onLoaded) {
+                try {
                     options.texture = texture;
                     onLoaded(options);
                 }
-                catch(e){
+                catch (e) {
                     print("RemoteJSON: error in onLoaded callback for " + url + ": " + e + "\n" + e.stack);
                 }
             }
@@ -77,15 +78,15 @@ function loadJson(url, onLoaded) {
             try {
                 data = JSON.parse(jsonString);
             }
-            catch (e){
+            catch (e) {
                 print("RemoteJSON: invalid JSON from " + url + ": " + e);
                 return;
             }
-            if (onLoaded){
-                try{
+            if (onLoaded) {
+                try {
                     onLoaded(data);
                 }
-                catch(e){
+                catch (e) {
                     print("RemoteJSON: error in onLoaded callback for " + url + ": " + e + "\n" + e.stack);
                 }
             }

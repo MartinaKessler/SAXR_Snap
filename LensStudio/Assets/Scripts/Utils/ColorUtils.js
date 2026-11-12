@@ -4,6 +4,7 @@
 /**
  * Convert a 6- or 8-digit hex color to a vec4 (r,g,b,a in 0..1)
  * A 6-digit hex has no alpha, so alpha is set to 1 (opaque)
+ * An alpha of 0 is treated as 1 (opaque), since irisLOD uses "#rrggbb00" for colors
  * @param   {string} hex "#rrggbb" or "#rrggbbaa", "#" optional
  * @returns {vec4}       color
  */
@@ -13,6 +14,10 @@ function hexToColor(hex) {
     var g = parseInt(hex.substring(2, 4), 16) / 255;
     var b = parseInt(hex.substring(4, 6), 16) / 255;
     var a = (hex.length === 8) ? parseInt(hex.substring(6, 8), 16) / 255 : 1;
+    // TODO: discuss with Philipp if this is a bug in irisLOD or if it is expected that a transparency of 0 should be interpreted as opaque
+    if (a === 0) {
+        a = 0.5;
+    }
     return new vec4(r, g, b, a);
 }
 
