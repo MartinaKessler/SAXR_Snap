@@ -2,7 +2,10 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   server: {
-    // allow access through VS Code port forwarding (dev tunnels)
-    allowedHosts: ['.devtunnels.ms'],
+    allowedHosts: ['.devtunnels.ms'], // allow access through VS Code port forwarding (dev tunnels)
   },
+  build: {
+    target: 'esnext', // allow for top-level-await
+  },
+  base: '/SAXR_Snap/',
 });
