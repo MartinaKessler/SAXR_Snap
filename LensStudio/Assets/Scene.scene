@@ -1609,14 +1609,15 @@
   ScriptAsset: !<reference> 3f742bf9-70ae-46d7-9c5a-8c35c778616a
   ScriptInputsDefault:
     jsonUrl: true
+    sceneIndex: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       useUrl: false
       jsonUrl: "https://service.metason.net/ar/content/viz/irisLOD/datareps.json"
-      jsonFile: !<reference.JsonAsset> 1505605f-9e1f-4162-be8a-fbaf0319dd3f
-      sceneIndex: 1
+      jsonFile: !<reference.JsonAsset> 146d1c51-c368-4fdd-b2f3-b22100d86702
+      sceneIndex: 0
   ScriptTypes:
     "":
       {}

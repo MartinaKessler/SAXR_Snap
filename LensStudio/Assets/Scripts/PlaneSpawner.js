@@ -14,14 +14,14 @@ var planeTextures = {
     // "-zy.png": requireAsset("../Datasets/iris/-zy.png"),
     // "lc.png":  requireAsset("../Datasets/iris/lc.png"),
 
-    // irisLOD
-    "xy.png":  requireAsset("../Datasets/irisLOD/xy.png"),
-    "-xy.png": requireAsset("../Datasets/irisLOD/-xy.png"),
-    "xz.png":  requireAsset("../Datasets/irisLOD/xz.png"),
-    "xz+s.png":  requireAsset("../Datasets/irisLOD/xz+s.png"),
-    "zy.png":  requireAsset("../Datasets/irisLOD/zy.png"),
-    "-zy.png": requireAsset("../Datasets/irisLOD/-zy.png"),
-    "lc.png":  requireAsset("../Datasets/irisLOD/lc.png"),
+    // // irisLOD
+    // "xy.png":  requireAsset("../Datasets/irisLOD/xy.png"),
+    // "-xy.png": requireAsset("../Datasets/irisLOD/-xy.png"),
+    // "xz.png":  requireAsset("../Datasets/irisLOD/xz.png"),
+    // "xz+s.png":  requireAsset("../Datasets/irisLOD/xz+s.png"),
+    // "zy.png":  requireAsset("../Datasets/irisLOD/zy.png"),
+    // "-zy.png": requireAsset("../Datasets/irisLOD/-zy.png"),
+    // "lc.png":  requireAsset("../Datasets/irisLOD/lc.png"),
 
     // // iris
     // "https://service.metason.net/ar/content/viz/irisLOD/xy.png":  requireAsset("../Datasets/iris/xy.png"),
@@ -75,6 +75,9 @@ var planeTextures = {
     // "xz.png":  requireAsset("../Datasets/line/xz.png"),
     // "zy.png":  requireAsset("../Datasets/line/zy.png"),
     // "-zy.png": requireAsset("../Datasets/line/-zy.png"),
+
+    // fruits
+    "xz+p.png": requireAsset("../Datasets/fruits/xz+p.png"),
 };
 
 // Rotation that maps the plane prefab (lying in XZ) onto each data plane type
