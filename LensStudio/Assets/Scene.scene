@@ -655,7 +655,7 @@
   ScriptInputs:
     "":
       useUrl: true
-      jsonUrl: "https://service.metason.net/saxr/samples/mesh/datareps.json"
+      jsonUrl: "https://service.metason.net/saxr/samples/iris/datareps.json"
       jsonFile: !<reference.JsonAsset> 712a5b98-bd3d-4d79-a302-6ce5e7ad5e6f
       sceneIndex: 0
   ScriptTypes:
