@@ -23,6 +23,19 @@ async function getCamera(): Promise<MediaStream | null> {
   }
 }
 
+const jsonForm = document.getElementById("json-form") as HTMLFormElement;
+const jsonInput = document.getElementById("json-url") as HTMLInputElement;
+
+jsonForm.addEventListener("submit", async (event) => {
+  event.preventDefault(); // prevent the browser from reloading the page (default form behaviour)
+  await applyJson(jsonInput.value);
+});
+
+let applyJson = async (url: string) => {
+  // add this placeholder for applyJson because session & lens are not yet loaded
+  console.warn("Lens not ready yet");
+};
+
 const token = import.meta.env.VITE_API_KEY;
 const cameraKit = await bootstrapCameraKit({
   apiToken: token,
@@ -54,18 +67,9 @@ const lens = await cameraKit.lensRepository.loadLens(
   import.meta.env.VITE_SAXR_IRIS,
   import.meta.env.VITE_GROUP_ID
 );
-const jsonForm = document.getElementById("json-form") as HTMLFormElement;
-const jsonInput = document.getElementById("json-url") as HTMLInputElement;
 
-async function applyJson(url: string) {
-  await session.applyLens(lens, {
-    launchParams: { url: url },
-  });
+applyJson = async (url: string) => {
+  await session.applyLens(lens, { launchParams: { url: url }, });
 }
-
-jsonForm.addEventListener("submit", async (event) => {
-  event.preventDefault(); // without this, the browser would reload the page
-  await applyJson(jsonInput.value);
-});
 
 await applyJson(jsonInput.value);
