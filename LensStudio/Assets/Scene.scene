@@ -325,6 +325,22 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/1571b317-4b6d-4cbb-9baf-052e4b031a8a>
+  PrefabRemaps:
+    []
+  Name: Config
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> cc500c4d-2da6-4512-b634-905b789a99f2
+    - !<own> 526ca581-8dfb-45d4-8260-93ae52bc31e4
 - !<ScriptComponent/164bac00-22a0-4ca0-a98f-974b9905b68c>
   PrefabRemaps:
     []
@@ -625,6 +641,26 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/526ca581-8dfb-45d4-8260-93ae52bc31e4>
+  PrefabRemaps:
+    []
+  Name: Config
+  Enabled: true
+  ScriptAsset: !<reference> 3f742bf9-70ae-46d7-9c5a-8c35c778616a
+  ScriptInputsDefault:
+    useUrl: true
+    sceneIndex: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      useUrl: true
+      jsonUrl: "https://service.metason.net/saxr/samples/mesh/datareps.json"
+      jsonFile: !<reference.JsonAsset> 712a5b98-bd3d-4d79-a302-6ce5e7ad5e6f
+      sceneIndex: 0
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/52cadc4a-0d68-46f3-9b75-793569083811>
   PrefabRemaps:
     []
@@ -1430,6 +1466,7 @@
     HasSegmentScaleCompensation: false
   Children:
     - !<own> f4dbdacd-d75f-4d0d-863b-cdd1f269522a
+    - !<own> 1571b317-4b6d-4cbb-9baf-052e4b031a8a
     - !<own> 0b1ace25-05db-4b0f-83f6-d8c9942e7498
     - !<own> 29e2bbc4-ea09-44e6-a0d7-5d19e48de8de
     - !<own> 29e889e0-fbbb-4cba-9795-86edfb4824b6
@@ -1451,7 +1488,7 @@
   ScriptTypes:
     "":
       {}
-- !<ScriptComponent/c9fdae88-1bf3-49be-b5b4-248530e2cd3a>
+- !<ScriptComponent/cc500c4d-2da6-4512-b634-905b789a99f2>
   PrefabRemaps:
     []
   Name: Constants
@@ -1601,26 +1638,6 @@
   Components:
     - !<own> 6f9e5546-d4c5-49e7-8e04-e8a195ad0d33
     - !<own> f92bd6f4-566e-4242-ac1b-47b3d6ab4488
-- !<ScriptComponent/e2a1d4bf-b171-41ee-b5c5-629ebc2d69f5>
-  PrefabRemaps:
-    []
-  Name: Config
-  Enabled: true
-  ScriptAsset: !<reference> 3f742bf9-70ae-46d7-9c5a-8c35c778616a
-  ScriptInputsDefault:
-    jsonUrl: true
-    sceneIndex: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      useUrl: false
-      jsonUrl: "https://service.metason.net/ar/content/viz/irisLOD/datareps.json"
-      jsonFile: !<reference.JsonAsset> 146d1c51-c368-4fdd-b2f3-b22100d86702
-      sceneIndex: 0
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/e57c4083-6a9c-4568-bf73-5737f3b2f486>
   PrefabRemaps:
     []
@@ -1705,8 +1722,6 @@
   Children:
     []
   Components:
-    - !<own> c9fdae88-1bf3-49be-b5b4-248530e2cd3a
-    - !<own> e2a1d4bf-b171-41ee-b5c5-629ebc2d69f5
     - !<own> 5bbcafed-3231-4c17-8281-851d95e55fe2
     - !<own> 68664c0b-4902-4691-ae9d-7843170ff31d
     - !<own> 1279d6c3-61d4-4184-83a3-53712420e2e8

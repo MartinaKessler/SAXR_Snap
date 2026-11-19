@@ -5,6 +5,15 @@
 // @input Asset.RemoteMediaModule remoteMediaModule
 // @input string                  textureUrl        = "https://service.metason.net/ar/content/viz/irisLOD/lc.png"
 
+// Prefix relative paths with global.config.basePath
+// absolute http(s) URLs are returned unchanged
+function resolveUrl(url) {
+    if (/^https?:\/\//i.test(url)) {
+        return url;
+    }
+    return global.config.basePath + url;
+}
+
 // Returns a DynamicResource for the URL, or undefined if remote loading is not possible in this runtime
 function loadResource(url) {
     // internetModule & remoteMediaModule is missing in Snapchat and in the Lens submission test runtime
@@ -33,7 +42,8 @@ function loadResource(url) {
  * @param {string}   options.textureName image URL
  */
 function loadTexture(onLoaded, options) {
-    var url = options.textureName;
+    var url = resolveUrl(options.textureName);
+
     var resource = loadResource(url);
     if (!resource || typeof script.remoteMediaModule.loadResourceAsImageTexture !== "function") {
         return;
@@ -41,14 +51,14 @@ function loadTexture(onLoaded, options) {
     script.remoteMediaModule.loadResourceAsImageTexture(
         resource,
         function (texture) {
-            print("RemoteTexture: loaded " + url);
+            // print("RemoteTexture: loaded " + url);
             if (onLoaded) {
                 try {
                     options.texture = texture;
                     onLoaded(options);
                 }
                 catch (e) {
-                    print("RemoteJSON: error in onLoaded callback for " + url + ": " + e + "\n" + e.stack);
+                    print("RemoteTexture: error in onLoaded callback for " + url + ": " + e + "\n" + e.stack);
                 }
             }
         },
@@ -73,7 +83,7 @@ function loadJson(url, onLoaded) {
     script.remoteMediaModule.loadResourceAsString(
         resource,
         function (jsonString) {
-            print("RemoteJSON: loaded " + url);
+            // print("RemoteJSON: loaded " + url);
             var data;
             try {
                 data = JSON.parse(jsonString);
@@ -112,5 +122,4 @@ script.loadJson = loadJson;
 
 script.createEvent("OnStartEvent").bind(function () {
     global.inputUtils.warnIfMissing(script, ["internetModule", "remoteMediaModule", "textureUrl"]);
-    // loadTexture(getTextureUrl());
 });

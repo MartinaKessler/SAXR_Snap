@@ -91,7 +91,7 @@ var planeRotations = {
 };
 // TODO: add link to SAXR README
 // Legend panels (see README): l + c|m|s|g, then pose "=" flat, "|" upright or "!" upright billboarding
-var flatLegendPattern    = /^l[cmsg]=/i;
+var flatLegendPattern    = /^l[cmsg](=|$)/i;
 var uprightLegendPattern = /^l[cmsg][|!]/i;
 
 // Checked in order when the type has no exact entry in planeRotations
