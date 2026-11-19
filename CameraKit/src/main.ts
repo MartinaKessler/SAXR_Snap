@@ -33,7 +33,7 @@ jsonForm.addEventListener("submit", async (event) => {
 
 let applyJson = async (url: string) => {
   // add this placeholder for applyJson because session & lens are not yet loaded
-  console.warn("Lens not ready yet");
+  console.warn(`Lens not ready yet, ignoring ${url}`);
 };
 
 const token = import.meta.env.VITE_API_KEY;
