@@ -428,6 +428,7 @@
       octahedronSpawner: !<reference.ScriptComponent> 777574a8-caed-43a0-90f1-ce2186d90586
       plusSpawner: !<reference.ScriptComponent> 6c4ef9bc-7ddd-4b4f-81c0-07e136ec52fc
       quadSpawner: !<reference.ScriptComponent> 389ad49c-60c4-431b-b83a-6691aea9093c
+      arcSpawner: !<reference.ScriptComponent> eee79863-fe91-416c-8531-3fd67f2b23c8
   ScriptTypes:
     "":
       {}
@@ -466,6 +467,7 @@
     - !<own> 5919875f-fdd5-4dec-8398-468117621c60
     - !<own> 11dca15c-26c5-4053-a867-a7906dcafa3f
     - !<own> 9925b1e3-d7ea-415d-9cad-613341651e31
+    - !<own> ddbf31d9-10ae-4a03-a812-4f7864d6a575
   Components:
     - !<own> 3800dc86-8f8e-4b04-ab95-0609874846c3
 - !<ScriptComponent/3800dc86-8f8e-4b04-ab95-0609874846c3>
@@ -648,15 +650,14 @@
   Enabled: true
   ScriptAsset: !<reference> 3f742bf9-70ae-46d7-9c5a-8c35c778616a
   ScriptInputsDefault:
-    useUrl: true
     sceneIndex: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      useUrl: true
+      useUrl: false
       jsonUrl: "https://service.metason.net/saxr/samples/iris/datareps.json"
-      jsonFile: !<reference.JsonAsset> 712a5b98-bd3d-4d79-a302-6ce5e7ad5e6f
+      jsonFile: !<reference.JsonAsset> 146d1c51-c368-4fdd-b2f3-b22100d86702
       sceneIndex: 0
   ScriptTypes:
     "":
@@ -1591,6 +1592,21 @@
     []
   Components:
     - !<own> a8b83f67-eca8-4327-9c4b-c960b3dd67d8
+- !<SceneObject/ddbf31d9-10ae-4a03-a812-4f7864d6a575>
+  PrefabRemaps:
+    []
+  Name: ArcSpawner
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> eee79863-fe91-416c-8531-3fd67f2b23c8
 - !<SceneObject/de16fb13-2503-49c5-9417-c4d77ebca623>
   PrefabRemaps:
     - d1aa52b7-1efd-485f-b70a-a3df1a4b23bb: 0d2ae1fd-5ba1-4395-7da5-06c0f52155c8
@@ -1673,6 +1689,22 @@
   BlendNormals: false
   BlendShapes:
     {}
+- !<ScriptComponent/eee79863-fe91-416c-8531-3fd67f2b23c8>
+  PrefabRemaps:
+    []
+  Name: ArcSpawner
+  Enabled: true
+  ScriptAsset: !<reference> 19df582d-f703-47ab-9852-a33697da621b
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      material: !<reference.Material> bb5cf0f5-71d6-4550-bfe6-8c60844bc1be
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/f1507d94-5be7-4b53-ac09-0b16ac6765af>
   PrefabRemaps:
     []

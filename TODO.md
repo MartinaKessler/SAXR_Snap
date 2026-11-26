@@ -13,7 +13,6 @@
 - improve documentation in SAXR Repo: explain all the inputs for the types, e.g. for arc
 
 ## New Features
-- arc
 - image
 - surface
 - text
