@@ -10,6 +10,27 @@
 // @input Component.ScriptComponent octahedronSpawner
 // @input Component.ScriptComponent plusSpawner
 // @input Component.ScriptComponent quadSpawner
+// @input Component.ScriptComponent arcSpawner
+
+/**
+ * Parse an attribute string of key:value pairs separated by ";" into an object
+ * e.g. "angle:45;start:90" -> { angle: "45", start: "90" }
+ * @param   {string} str attribute string
+ * @returns {Object}     keys and values as strings, empty object if str is empty
+ */
+function parseKeyValuePairs(str) {
+    var dict = {};
+    if (!str) {
+        return dict;
+    }
+    for (var keyValuePair of str.split(";")) {
+        var idx = keyValuePair.indexOf(":");
+        if (idx >= 0) {
+            dict[keyValuePair.substring(0, idx).trim()] = keyValuePair.substring(idx + 1).trim();
+        }
+    }
+    return dict;
+}
 
 /**
  * Spawn all elements of the scene selected by global.config.sceneIndex
@@ -24,7 +45,7 @@ function spawnDataReps(data) {
         switch (type) {
             case "sphere":
                 if (obj.w !== obj.h || obj.w !== obj.d) {
-                    print("Warning: sphere dimensions are not equal");
+                    print("Warning: sphere width, depth and height are not equal, using width");
                 }
 
                 var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
@@ -102,6 +123,41 @@ function spawnDataReps(data) {
                 script.quadSpawner.spawnQuad({ corners: [upperLeft, upperRight, lowerRight, lowerLeft], color: color });
                 break;
 
+            case "arc":
+                var kvs = parseKeyValuePairs(obj.asset);
+                var ratio = parseFloat(kvs.ratio);
+                if (isNaN(ratio)) {
+                    print("Warning: arc ratio missing or invalid, skipping arc");
+                    break;
+                }
+                var startAngle = parseFloat(kvs.start);
+                if (isNaN(startAngle)) {
+                    print("Warning: arc start angle missing or invalid, skipping arc");
+                    break;
+                }
+                var sweepAngle = parseFloat(kvs.angle);
+                if (isNaN(sweepAngle) || sweepAngle === 0) {
+                    print("Warning: arc start angle missing or invalid, skipping arc");
+                    break;
+                }
+                if (obj.w !== obj.d) {
+                    print("Warning: arc width and depth are not equal, using width");
+                }
+
+                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var outerRadius = global.constants.toWorldScale(obj.w / 2);
+                var color = global.colorUtils.toColor(obj.color);
+                script.arcSpawner.spawnArc({
+                    position: position,
+                    outerRadius: outerRadius,
+                    innerRadius: outerRadius * ratio,
+                    height: global.constants.toWorldScale(obj.h),
+                    startAngle: startAngle,
+                    sweepAngle: sweepAngle,
+                    color: color,
+                });
+                break;
+
             case "xz":
                 var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
                 var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
@@ -143,7 +199,7 @@ function spawnDataReps(data) {
 }
 
 function onStart() {
-    global.inputUtils.warnIfMissing(script, ["remoteMediaLoader", "sphereSpawner", "boxSpawner", "cylinderSpawner", "planeSpawner", "pyramidSpawner", "octahedronSpawner", "plusSpawner", "quadSpawner"]);
+    global.inputUtils.warnIfMissing(script, ["remoteMediaLoader", "sphereSpawner", "boxSpawner", "cylinderSpawner", "planeSpawner", "pyramidSpawner", "octahedronSpawner", "plusSpawner", "quadSpawner", "arcSpawner"]);
 
     if (global.config.useUrl) {
         script.remoteMediaLoader.loadJson(global.config.jsonUrl, spawnDataReps);

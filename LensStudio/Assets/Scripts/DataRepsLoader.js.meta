@@ -28,6 +28,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    arcSpawner: false
     boxSpawner: false
     cylinderSpawner: false
     octahedronSpawner: false
@@ -55,6 +56,7 @@
       octahedronSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       plusSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       quadSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      arcSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}

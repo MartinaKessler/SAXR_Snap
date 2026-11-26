@@ -10,7 +10,7 @@ updateCheckpoint: 107
 sceneId: 0a1ccb1a-fe88-4fbb-9883-e3af3c75fd99
 metaInfo:
   hints:
-    []
+    - lens_hint_tap
   tags:
     []
   lensName: SAXR

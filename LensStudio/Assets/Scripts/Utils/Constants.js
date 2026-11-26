@@ -1,8 +1,10 @@
 // Project-wide constants, exposed as `global.constants`
 // Place this on a SceneObject near the top of the scene hierarchy so it initializes before any script that calls it
 
-var WORLD_SCALE = 100; // converts from units of the json (m) to units in Lens Studio (cm)
-var LINE_WIDTH  = 0.2; // width of the line for the visualization type "line"
+var WORLD_SCALE       = 100; // converts from units of the json (m) to units in Lens Studio (cm)
+var LINE_WIDTH        = 0.2; // width of the line for the visualization type "line"
+var ARC_SEGMENT_ANGLE = 5;   // max angle (degrees) of one segment of the visualization type "arc",
+                             // the curve is drawn as flat planes, using ARC_SEGMENT_ANGLE to calculate the degrees each plane covers
 
 /**
  * Convert a value (m) into Lens Studio world-space (cm) by applying WORLD_SCALE
@@ -19,5 +21,6 @@ function toWorldScale(value) {
 global.constants = {
     WORLD_SCALE: WORLD_SCALE,
     LINE_WIDTH: LINE_WIDTH,
+    ARC_SEGMENT_ANGLE: ARC_SEGMENT_ANGLE,
     toWorldScale: toWorldScale,
 };
