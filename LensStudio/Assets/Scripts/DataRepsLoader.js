@@ -11,6 +11,22 @@
 // @input Component.ScriptComponent plusSpawner
 // @input Component.ScriptComponent quadSpawner
 // @input Component.ScriptComponent arcSpawner
+// @input Component.ScriptComponent textSpawner
+
+const WORLD_SCALE = 100; // converts from units of the json (m) to units in Lens Studio (cm)
+const LINE_WIDTH  = 0.2; // width (cm) of the visualization type "line"
+
+/**
+ * Convert a value (m) into Lens Studio world-space (cm) by applying WORLD_SCALE
+ * @param   {number|vec3} value a plain number or a vec3
+ * @returns {number|vec3}       value in cm
+ */
+function toWorldScale(value) {
+    if (typeof value === "number") {
+        return value * WORLD_SCALE;
+    }
+    return value.uniformScale(WORLD_SCALE);
+}
 
 /**
  * Parse an attribute string of key:value pairs separated by ";" into an object
@@ -48,30 +64,30 @@ function spawnDataReps(data) {
                     print("Warning: sphere width, depth and height are not equal, using width");
                 }
 
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var scale = global.constants.toWorldScale(obj.w);
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(obj.w);
                 var color = global.colorUtils.toColor(obj.color);
                 script.sphereSpawner.spawnObject({ position: position, scale: scale, color: color });
                 break;
 
             case "box":
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 var color = global.colorUtils.toColor(obj.color);
                 script.boxSpawner.spawnObject({ position: position, scale: scale, color: color });
                 break;
 
             case "cylinder":
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 var color = global.colorUtils.toColor(obj.color);
                 script.cylinderSpawner.spawnObject({ position: position, scale: scale, color: color });
                 break;
 
             case "pyramid":
             case "pyramid_down":
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 var color = global.colorUtils.toColor(obj.color);
                 var rotation = null;
                 if (type === "pyramid_down") {
@@ -81,16 +97,16 @@ function spawnDataReps(data) {
                 break;
 
             case "octahedron":
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 var color = global.colorUtils.toColor(obj.color);
                 script.octahedronSpawner.spawnObject({ position: position, scale: scale, color: color });
                 break;
 
             case "plus":
             case "cross":
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 var color = global.colorUtils.toColor(obj.color);
                 var rotation = null;
                 if (type === "cross") {
@@ -100,11 +116,11 @@ function spawnDataReps(data) {
                 break;
 
             case "line":
-                var midPoint = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var midPoint = toWorldScale(new vec3(obj.x, obj.y, obj.z));
                 var color = global.colorUtils.toColor(obj.color);
-                var direction = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
+                var direction = toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 var length = direction.length;
-                var scale = new vec3(global.constants.LINE_WIDTH, length, global.constants.LINE_WIDTH);
+                var scale = new vec3(LINE_WIDTH, length, LINE_WIDTH);
                 var rotation = null;
                 if (length > 1e-6) {
                     rotation = quat.rotationFromTo(new vec3(0, 1, 0), direction.normalize());
@@ -113,9 +129,9 @@ function spawnDataReps(data) {
                 break;
 
             case "area":
-                var midPoint = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var upperRight = midPoint.add(global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d).uniformScale(0.5)));
-                var upperLeft = midPoint.add(global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d).uniformScale(-0.5)));
+                var midPoint = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var upperRight = midPoint.add(toWorldScale(new vec3(obj.w, obj.h, obj.d).uniformScale(0.5)));
+                var upperLeft = midPoint.add(toWorldScale(new vec3(obj.w, obj.h, obj.d).uniformScale(-0.5)));
                 // TODO: add y offset of xz plane, or check if offset is always at 0
                 var lowerLeft = new vec3(upperLeft.x, 0, upperLeft.z);
                 var lowerRight = new vec3(upperRight.x, 0, upperRight.z);
@@ -144,23 +160,38 @@ function spawnDataReps(data) {
                     print("Warning: arc width and depth are not equal, using width");
                 }
 
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var outerRadius = global.constants.toWorldScale(obj.w / 2);
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var outerRadius = toWorldScale(obj.w / 2);
                 var color = global.colorUtils.toColor(obj.color);
                 script.arcSpawner.spawnArc({
                     position: position,
                     outerRadius: outerRadius,
                     innerRadius: outerRadius * ratio,
-                    height: global.constants.toWorldScale(obj.h),
+                    height: toWorldScale(obj.h),
                     startAngle: startAngle,
                     sweepAngle: sweepAngle,
                     color: color,
                 });
                 break;
 
+            case "text":
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(obj.h);
+                
+                var rotation = null;
+                if (obj.h === 0) {
+                    // flat for height = 0, upright for depth = 0
+                    rotation = quat.fromEulerAngles(-Math.PI/2, 0, 0);
+                    scale = toWorldScale(obj.d);
+                }
+
+                var color = global.colorUtils.toColor(obj.color);
+                script.textSpawner.spawnObject({ position: position, rotation: rotation, scale: scale, color: color, text: obj.asset });
+                break;                
+
             case "xz":
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
                 break;
 
@@ -169,26 +200,25 @@ function spawnDataReps(data) {
             case "zy":
             case "-zy":
                 // plane origin is at the lower edge -> shift up by half the height
-                // TODO: document this in the repository
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y + 0.5 * obj.h, obj.z));
+                var position = toWorldScale(new vec3(obj.x, obj.y + 0.5 * obj.h, obj.z));
 
                 // swap d and h, because the plane in Lens Studio has extensions in width & height
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h));
+                var scale = toWorldScale(new vec3(obj.w, obj.d, obj.h));
                 script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
                 break;
         
         default:
             if (script.planeSpawner.flatLegendPattern.test(type)) {
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y, obj.z));
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.h, obj.d));
+                var position = toWorldScale(new vec3(obj.x, obj.y, obj.z));
+                var scale = toWorldScale(new vec3(obj.w, obj.h, obj.d));
                 script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
             }
             else if (script.planeSpawner.uprightLegendPattern.test(type)) {
                 // plane origin is at the lower edge -> shift up by half the height
                 // TODO: document this in the repository
-                var position = global.constants.toWorldScale(new vec3(obj.x, obj.y + 0.5 * obj.h, obj.z));
+                var position = toWorldScale(new vec3(obj.x, obj.y + 0.5 * obj.h, obj.z));
                 // swap d and h, because the plane in Lens Studio has extensions in width & height
-                var scale = global.constants.toWorldScale(new vec3(obj.w, obj.d, obj.h));
+                var scale = toWorldScale(new vec3(obj.w, obj.d, obj.h));
                 script.planeSpawner.spawnPlaneOfType(type, { position: position, scale: scale, textureName: obj.asset });
             }
             else {
@@ -199,7 +229,7 @@ function spawnDataReps(data) {
 }
 
 function onStart() {
-    global.inputUtils.warnIfMissing(script, ["remoteMediaLoader", "sphereSpawner", "boxSpawner", "cylinderSpawner", "planeSpawner", "pyramidSpawner", "octahedronSpawner", "plusSpawner", "quadSpawner", "arcSpawner"]);
+    global.inputUtils.warnIfMissing(script, ["remoteMediaLoader", "sphereSpawner", "boxSpawner", "cylinderSpawner", "planeSpawner", "pyramidSpawner", "octahedronSpawner", "plusSpawner", "quadSpawner", "arcSpawner", "textSpawner"]);
 
     if (global.config.useUrl) {
         script.remoteMediaLoader.loadJson(global.config.jsonUrl, spawnDataReps);

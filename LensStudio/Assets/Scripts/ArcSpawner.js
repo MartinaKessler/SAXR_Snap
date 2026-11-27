@@ -4,6 +4,8 @@
 
 // @input Asset.Material material
 
+const ARC_SEGMENT_ANGLE = 5; // max angle (degrees) of one segment, the curve is drawn as flat planes, each covering at most this angle
+
 var vertexCount = 0;
 
 // point on the circle with radius r at angle a (radians) and height y
@@ -65,7 +67,7 @@ function spawnArc(options) {
     var halfHeight = options.height / 2;
     var startAngle = options.startAngle * Math.PI / 180;
     var sweepAngle = options.sweepAngle * Math.PI / 180;
-    var numSegments = Math.max(1, Math.ceil(Math.abs(options.sweepAngle) / global.constants.ARC_SEGMENT_ANGLE));
+    var numSegments = Math.max(1, Math.ceil(Math.abs(options.sweepAngle) / ARC_SEGMENT_ANGLE));
 
     vertexCount = 0;
 

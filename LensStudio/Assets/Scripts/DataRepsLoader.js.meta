@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: f746cceb-c380-47e5-bd0a-15d6c895e524
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -38,6 +39,7 @@
     quadSpawner: false
     remoteMediaLoader: false
     sphereSpawner: false
+    textSpawner: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -57,6 +59,7 @@
       plusSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       quadSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
       arcSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      textSpawner: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
